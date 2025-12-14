@@ -354,7 +354,7 @@ abstract class StreamActivity : ThemeActivity(), StreamFragmentListener {
         onStopCalled = false
     }
 
-    override fun onPictureInPictureModeChanged(enabled: Boolean, newConfig: Configuration?) {
+    override fun onPictureInPictureModeChanged(enabled: Boolean, newConfig: Configuration) {
         super.onPictureInPictureModeChanged(enabled, newConfig)
         mBackstackLost = mBackstackLost or enabled
 

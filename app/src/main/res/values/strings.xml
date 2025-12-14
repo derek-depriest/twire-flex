@@ -140,12 +140,18 @@
     <string name="title_activity_live_stream">Live stream</string>
 
     <!-- Chat fragment -->
-    <string name="chat_send_message_hint">Type message</string>
+    <string name="chat_send_message_hint">Send a message</string>
     <string name="chat_status_connecting">Connecting to Chat…</string>
     <string name="chat_status_connected">Ready to Chat</string>
     <string name="chat_status_reconnecting">Reconnecting…</string>
     <string name="chat_status_connection_failed">Connection Failed</string>
-    <string name="chat_paused">Chat paused due to scroll.</string>
+    <string name="chat_paused">Chat paused due to scroll</string>
+    <string name="chat_backspace_desc">Delete character</string>
+    <string name="chat_emote_picker_desc">Open emote picker</string>
+    <string name="chat_send_desc">Send message</string>
+    <string name="chat_subsonly_desc">Subscribers only mode</string>
+    <string name="chat_r9k_desc">R9K mode active</string>
+    <string name="chat_slowmode_desc">Slow mode active</string>
 
     <!-- ChannelInfo activity -->
     <string name="channel_info_intent_object" translatable="false">STREAMERINFO_INTENT_OBJECT</string>
@@ -154,6 +160,8 @@
     <string name="my_streams_activity_title" translatable="false">@string/navigation_drawer_my_streams_title</string>
     <string name="my_streams_preview_image">Preview of the live channel</string>
     <string name="my_streams_cell_current_viewers">%,d viewers</string>
+    <string name="stream_live_badge">LIVE</string>
+    <string name="stream_viewers_icon_desc">Viewers</string>
 
     <!-- Top Streams Activity -->
     <string name="top_streams_activity_title" translatable="false">@string/navigation_drawer_top_streams_title</string>
@@ -302,6 +310,8 @@
     <string name="black_theme_name">Black</string>
     <string name="night_theme_name">Night</string>
     <string name="true_night_theme_name">True night</string>
+    <string name="twitch_theme_name">Twitch</string>
+    <string name="twitch_oled_theme_name">Twitch OLED</string>
 
     <!-- Shared Preferences -->
     <string name="title_activity_game" translatable="false">GameActivity</string>

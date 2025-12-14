@@ -321,7 +321,7 @@ object Settings {
 
     @JvmStatic
     val isDarkTheme: Boolean
-        get() = theme == Theme.NIGHT || theme == Theme.TRUE_NIGHT
+        get() = theme == Theme.NIGHT || theme == Theme.TRUE_NIGHT || theme == Theme.TWITCH || theme == Theme.TWITCH_OLED
 
     /**
      * Stream - Used to remember the last quality the user selected

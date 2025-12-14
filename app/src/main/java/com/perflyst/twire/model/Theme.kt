@@ -18,5 +18,15 @@ enum class Theme(
         R.string.true_night_theme_name,
         R.drawable.circle_theme_black_chooser,
         R.style.TrueNightTheme
+    ),
+    TWITCH(
+        R.string.twitch_theme_name,
+        R.drawable.circle_theme_twitch_chooser,
+        R.style.TwitchTheme
+    ),
+    TWITCH_OLED(
+        R.string.twitch_oled_theme_name,
+        R.drawable.circle_theme_twitch_oled_chooser,
+        R.style.TwitchOLEDTheme
     )
 }

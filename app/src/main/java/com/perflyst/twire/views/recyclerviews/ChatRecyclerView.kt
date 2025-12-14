@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.Configuration
 import android.util.AttributeSet
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ChatRecyclerView : RecyclerView {
     private var amountScrolled = 0
 
-    private var chatPaused: TextView? = null
+    private var chatPaused: View? = null
     private var lastScrolled = false
 
     constructor(context: Context) : super(context) {
@@ -36,9 +35,9 @@ class ChatRecyclerView : RecyclerView {
     val isScrolled: Boolean
         get() = amountScrolled > 1
 
-    fun setChatPaused(chatPaused: TextView) {
+    fun setChatPaused(chatPaused: View) {
         this.chatPaused = chatPaused
-        chatPaused.setOnClickListener { v: View? ->
+        chatPaused.setOnClickListener {
             smoothScrollToPosition(
                 this.adapter!!.itemCount - 1
             )

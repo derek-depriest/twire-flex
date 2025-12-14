@@ -158,4 +158,54 @@
     <color name="white_text_disabled">#4dffffff</color>
     <color name="white_text_secondary">#b3ffffff</color>
     <color name="white_text">#ffffff</color>
+
+    <!-- Modern Twitch-Inspired Theme Colors (Material Design 3) -->
+    <!-- Primary Purple/Violet -->
+    <color name="twitch_purple">#9146FF</color>
+    <color name="twitch_purple_dark">#6441A5</color>
+    <color name="twitch_purple_light">#BF94FF</color>
+    <color name="twitch_purple_container">#772CE8</color>
+
+    <!-- Dark Theme Backgrounds -->
+    <color name="twitch_background">#0E0E10</color>
+    <color name="twitch_surface">#18181B</color>
+    <color name="twitch_surface_variant">#26262C</color>
+    <color name="twitch_surface_elevated">#1F1F23</color>
+
+    <!-- Accent Colors for Interactions -->
+    <color name="accent_live">#F31260</color>
+    <color name="accent_success">#00F593</color>
+    <color name="accent_warning">#FFC837</color>
+    <color name="accent_error">#FF4545</color>
+
+    <!-- Text Colors with Proper Contrast -->
+    <color name="text_primary_dark">#EFEFF1</color>
+    <color name="text_secondary_dark">#ADADB8</color>
+    <color name="text_tertiary_dark">#6B6B7B</color>
+
+    <!-- OLED Theme Colors (Pure Black) -->
+    <color name="oled_background">#000000</color>
+    <color name="oled_surface">#0A0A0A</color>
+    <color name="oled_surface_variant">#141414</color>
+
+    <!-- Viewer count / Live badge backgrounds -->
+    <color name="viewer_count_background">#CC000000</color>
+    <color name="live_badge_background">#EB0400</color>
+
+    <!-- Stream Card Colors -->
+    <color name="stream_card_background_dark">#1F1F23</color>
+    <color name="stream_card_background_light">#FFFFFF</color>
+    <color name="stream_card_overlay_gradient_start">#00000000</color>
+    <color name="stream_card_overlay_gradient_end">#B3000000</color>
+
+    <!-- Chat Colors -->
+    <color name="chat_background_dark">#0E0E10</color>
+    <color name="chat_input_background_dark">#18181B</color>
+    <color name="chat_mention_highlight">#3D9146FF</color>
+    <color name="chat_system_message">#808080</color>
+
+    <!-- Navigation Colors -->
+    <color name="bottom_nav_background">#18181B</color>
+    <color name="bottom_nav_selected">#9146FF</color>
+    <color name="bottom_nav_unselected">#ADADB8</color>
 </resources>

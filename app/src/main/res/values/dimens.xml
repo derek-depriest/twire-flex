@@ -198,6 +198,17 @@
     <!-- OnlineStreams Card -->
     <dimen name="stream_card_elevation">2dp</dimen>
     <dimen name="stream_card_corner_radius">2dp</dimen>
+    <dimen name="stream_card_corner_radius_modern">12dp</dimen>
+    <dimen name="stream_preview_corner_radius">8dp</dimen>
+    <dimen name="stream_card_padding">12dp</dimen>
+    <dimen name="stream_info_margin_top">10dp</dimen>
+    <dimen name="stream_avatar_size">40dp</dimen>
+    <dimen name="stream_avatar_margin_end">12dp</dimen>
+    <dimen name="stream_badge_padding_horizontal">8dp</dimen>
+    <dimen name="stream_badge_padding_vertical">4dp</dimen>
+    <dimen name="stream_badge_margin">8dp</dimen>
+    <dimen name="stream_badge_corner_radius">4dp</dimen>
+    <dimen name="stream_viewer_icon_size">14dp</dimen>
     <dimen name="stream_title_margin_top">3dp</dimen>
     <dimen name="stream_title_margin_bottom">4dp</dimen>
     <dimen name="stream_card_first_top_margin">190dp</dimen>

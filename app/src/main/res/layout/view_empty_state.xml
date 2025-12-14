@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/empty_state_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <!-- Empty State Icon -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/empty_state_icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:padding="20dp"
+        android:src="@drawable/ic_theaters"
+        app:shapeAppearanceOverlay="@style/CircularImageView"
+        app:tint="?attr/disabledTextColor"
+        tools:src="@drawable/ic_theaters" />
+
+    <!-- Empty State Title -->
+    <TextView
+        android:id="@+id/empty_state_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textColor="?attr/textColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="No streams found" />
+
+    <!-- Empty State Description -->
+    <TextView
+        android:id="@+id/empty_state_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:maxWidth="280dp"
+        android:textColor="?attr/secondaryTextColor"
+        android:textSize="14sp"
+        tools:text="Follow some channels to see their streams here" />
+
+    <!-- Empty State Action Button (optional) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/empty_state_action"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:visibility="gone"
+        app:backgroundTint="?attr/colorAccent"
+        tools:text="Browse Streams"
+        tools:visibility="visible" />
+
+</LinearLayout>

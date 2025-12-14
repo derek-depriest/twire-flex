@@ -10,7 +10,7 @@ import android.view.ViewGroup.MarginLayoutParams
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
+import com.google.android.material.card.MaterialCardView
 import com.perflyst.twire.R
 import com.perflyst.twire.activities.ChannelActivity
 import com.perflyst.twire.activities.stream.LiveStreamActivity.Companion.createLiveStreamIntent
@@ -32,7 +32,8 @@ class StreamViewHolder(v: View) : ElementsViewHolder(v) {
     val vGame: TextView = v.findViewById(R.id.stream_game_and_viewers)
     val vOnlineSince: TextView = v.findViewById(R.id.stream_online_since)
     val sharedPadding: View = v.findViewById(R.id.shared_padding)
-    private val vCard: CardView = v.findViewById(R.id.cardView_online_streams)
+    val vViewerCount: TextView = v.findViewById(R.id.viewer_count)
+    private val vCard: MaterialCardView = v.findViewById(R.id.cardView_online_streams)
 
     override val previewView: ImageView get() = vPreviewImage
 
@@ -144,20 +145,29 @@ class StreamsAdapter(recyclerView: AutoSpanRecyclerView, private val activity: A
         val metrics = context.resources.displayMetrics
         viewHolder.vPreviewImage.layoutParams.width = metrics.widthPixels
 
-        val viewers =
-            context.getString(R.string.my_streams_cell_current_viewers, element.currentViewers)
-        val gameAndViewers = "$viewers - ${element.game}"
+        // Format viewer count for the overlay badge (compact format)
+        viewHolder.vViewerCount.text = formatViewerCount(element.currentViewers)
+
+        // Game info without viewers (viewers shown in overlay now)
+        viewHolder.vGame.text = element.game
 
         viewHolder.vDisplayName.text = element.userInfo.displayName
         viewHolder.vTitle.text = element.title
-        viewHolder.vGame.text = gameAndViewers
         viewHolder.vOnlineSince.text = Utils.getOnlineSince(element.startedAt)
         viewHolder.vPreviewImage.setVisibility(View.VISIBLE)
     }
 
+    private fun formatViewerCount(viewers: Int): String {
+        return when {
+            viewers >= 1_000_000 -> String.format("%.1fM", viewers / 1_000_000.0)
+            viewers >= 1_000 -> String.format("%.1fK", viewers / 1_000.0)
+            else -> viewers.toString()
+        }
+    }
+
     override val layoutResource: Int get() = R.layout.cell_stream
 
-    override val cornerRadiusResource: Int get() = R.dimen.stream_card_corner_radius
+    override val cornerRadiusResource: Int get() = R.dimen.stream_card_corner_radius_modern
 
     override val topMarginResource: Int get() = R.dimen.stream_card_first_top_margin
 

@@ -97,7 +97,7 @@ dependencies {
     implementation("androidx.transition:transition:1.4.1")
     // https://developer.android.com/jetpack/androidx/releases/recyclerview
     implementation("androidx.viewpager2:viewpager2:1.1.0-beta01")
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.media:media:1.6.0")
 
     //https://github.com/bumptech/glide/releases
