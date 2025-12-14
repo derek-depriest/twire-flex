@@ -248,6 +248,12 @@
     <string name="chat_enable_emote_ffz">Enable FrankerFaceZ (FFZ) Emotes</string>
     <string name="chat_enable_emote_seventv">Enable 7TV Emotes</string>
 
+    <!-- Flex Mode Settings (Foldable Devices) -->
+    <string name="settings_flex_mode_header">Foldable Display</string>
+    <string name="settings_flex_mode_enable">Auto Flex Mode</string>
+    <string name="settings_flex_mode_enable_summary">Automatically switch to flex mode when device is half-folded (tabletop mode). Video on top, chat on bottom.</string>
+    <string name="settings_landscape_header">Landscape</string>
+
     <!-- Stream Player Settings -->
     <string name="player_locked_player">Play while locked</string>
     <string name="player_show_viewercount">Show viewer count</string>

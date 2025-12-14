@@ -57,3 +57,46 @@ app/debug/
 .kotlin
 
 sentry.properties
+
+# Claude Code / AI Assistant files
+.claude/
+.aider*
+.cursor/
+
+# Implementation planning documents
+TWIRE_FLEX_MODE_IMPLEMENTATION.md
+*_IMPLEMENTATION.md
+*.implementation.md
+
+# Additional Android Studio files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/misc.xml
+.idea/deploymentTargetDropDown.xml
+.idea/.name
+.idea/navEditor.xml
+
+# Additional generated files
+*.aab
+*.hprof
+release/
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.swp
+*~

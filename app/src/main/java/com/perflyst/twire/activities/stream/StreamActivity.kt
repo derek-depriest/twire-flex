@@ -8,15 +8,18 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.transition.AutoTransition
 import android.transition.Fade
 import android.transition.Slide
 import android.transition.Transition
+import android.transition.TransitionManager
 import android.transition.TransitionSet
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -30,6 +33,8 @@ import com.perflyst.twire.fragments.StreamFragment.Companion.getScreenRect
 import com.perflyst.twire.fragments.StreamFragment.Companion.newInstance
 import com.perflyst.twire.fragments.StreamFragment.StreamFragmentListener
 import com.perflyst.twire.service.Settings.chatLandscapeWidth
+import com.perflyst.twire.service.Settings.flexModeEnabled
+import com.perflyst.twire.utils.FlexModeManager
 import timber.log.Timber
 
 abstract class StreamActivity : ThemeActivity(), StreamFragmentListener {
@@ -38,6 +43,11 @@ abstract class StreamActivity : ThemeActivity(), StreamFragmentListener {
     private var mBackstackLost = false
     private var onStopCalled = false
     private var initialOrientation = 0
+
+    // Flex mode support for foldable devices
+    private lateinit var flexModeManager: FlexModeManager
+    private var currentFlexModeState: FlexModeManager.FlexModeState = FlexModeManager.FlexModeState.Flat
+    private var isInFlexMode = false
 
     protected abstract val layoutResource: Int
 
@@ -55,6 +65,9 @@ abstract class StreamActivity : ThemeActivity(), StreamFragmentListener {
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
         initialOrientation = getResources().configuration.orientation
+
+        // Initialize flex mode manager for foldable device support
+        initFlexModeManager()
 
         if (savedInstanceState == null) {
             val fm = supportFragmentManager
@@ -79,6 +92,97 @@ abstract class StreamActivity : ThemeActivity(), StreamFragmentListener {
             }
         }
 
+        updateOrientation()
+    }
+
+    /**
+     * Initialize the flex mode manager for foldable device support.
+     * This detects when the device enters "tabletop mode" (half-folded with horizontal hinge)
+     * and adjusts the layout to show video on top and chat on bottom.
+     */
+    private fun initFlexModeManager() {
+        flexModeManager = FlexModeManager(this) { state ->
+            currentFlexModeState = state
+            if (flexModeEnabled) {
+                onFlexModeStateChanged(state)
+            }
+        }
+        lifecycle.addObserver(flexModeManager)
+    }
+
+    /**
+     * Handle flex mode state changes.
+     * When entering flex mode, switch to a split layout with video on top and chat on bottom.
+     */
+    private fun onFlexModeStateChanged(state: FlexModeManager.FlexModeState) {
+        Timber.d("Flex mode state changed: $state")
+
+        when (state) {
+            is FlexModeManager.FlexModeState.FlexMode -> {
+                if (!isInFlexMode) {
+                    isInFlexMode = true
+                    enableFlexModeLayout(state)
+                }
+            }
+            is FlexModeManager.FlexModeState.Flat -> {
+                if (isInFlexMode) {
+                    isInFlexMode = false
+                    disableFlexModeLayout()
+                }
+            }
+        }
+    }
+
+    /**
+     * Enable flex mode layout - video on top half, chat on bottom half.
+     * Uses smooth transitions for a polished user experience.
+     */
+    private fun enableFlexModeLayout(state: FlexModeManager.FlexModeState.FlexMode) {
+        Timber.d("Enabling flex mode layout. Hinge at Y: ${state.hingeTop}")
+
+        val mainContent = findViewById<ViewGroup>(R.id.main_content) ?: return
+        val videoContainer = findViewById<View>(this.videoContainerResource) ?: return
+        val chatContainer = findViewById<View>(R.id.chat_fragment) ?: return
+
+        // Animate the layout transition
+        val transition = AutoTransition().apply {
+            duration = 300
+            interpolator = DecelerateInterpolator()
+        }
+        TransitionManager.beginDelayedTransition(mainContent, transition)
+
+        // Set video container to fill from top to hinge position
+        val videoParams = videoContainer.layoutParams as RelativeLayout.LayoutParams
+        videoParams.height = state.hingeTop
+        videoParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        videoParams.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+        videoContainer.layoutParams = videoParams
+
+        // Set chat container to fill from hinge to bottom
+        val chatParams = chatContainer.layoutParams as RelativeLayout.LayoutParams
+        chatParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+        chatParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        chatParams.addRule(RelativeLayout.BELOW, this.videoContainerResource)
+        chatParams.removeRule(RelativeLayout.ALIGN_PARENT_END)
+        chatParams.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT)
+        chatContainer.layoutParams = chatParams
+
+        // Hide the landscape chat wrapper since we're using flex mode layout
+        findViewById<View>(R.id.chat_landscape_fragment)?.visibility = View.GONE
+        findViewById<View>(R.id.chat_placement_wrapper)?.visibility = View.GONE
+    }
+
+    /**
+     * Disable flex mode layout and return to normal orientation-based layout.
+     */
+    private fun disableFlexModeLayout() {
+        Timber.d("Disabling flex mode layout")
+
+        // Restore visibility of layout wrappers
+        findViewById<View>(R.id.chat_landscape_fragment)?.visibility = View.VISIBLE
+        findViewById<View>(R.id.chat_placement_wrapper)?.visibility = View.VISIBLE
+
+        // Revert to standard orientation-based layout
         updateOrientation()
     }
 
@@ -215,6 +319,12 @@ abstract class StreamActivity : ThemeActivity(), StreamFragmentListener {
         get() = findViewById(R.id.main_content)
 
     fun updateOrientation() {
+        // If we're in flex mode, don't apply standard orientation changes
+        if (isInFlexMode && flexModeEnabled) {
+            Timber.d("Skipping orientation update - in flex mode")
+            return
+        }
+
         val landscape =
             getResources().configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 

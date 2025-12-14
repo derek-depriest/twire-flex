@@ -78,6 +78,8 @@ object Settings {
     private const val CHAT_EMOTE_BTTV = "chatEmoteBTTV"
     private const val CHAT_EMOTE_FFZ = "chatEmoteFFZ"
     private const val CHAT_EMOTE_SEVENTV = "chatEmoteSEVENTV"
+    private const val FLEX_MODE_ENABLED = "flexModeEnabled"
+    private const val FLEX_MODE_CHAT_HEIGHT_PERCENT = "flexModeChatHeightPercent"
     private const val NOTIFY_LIVE = "notifyUserLive"
     private const val LAST_START_UP_VERSION_CODE = "lastStartUpVersionCode"
     private const val SHOW_CHANGELOGS = "showChangelogs"
@@ -529,6 +531,22 @@ object Settings {
      */
     @JvmStatic
     var chatAccountConnect by Pref(CHAT_ACCOUNT_CONNECT, true)
+
+    /**
+     * Flex Mode - Enable automatic flex mode switching for foldable devices.
+     * When enabled, the layout will automatically adjust when the device is in
+     * tabletop mode (half-folded with horizontal hinge).
+     */
+    @JvmStatic
+    var flexModeEnabled by Pref(FLEX_MODE_ENABLED, true)
+
+    /**
+     * Flex Mode - The percentage of the bottom half used for chat in flex mode.
+     * Value from 0 to 100, where 50 means the hinge position is used directly.
+     * Default is 50 (use natural hinge position).
+     */
+    @JvmStatic
+    var flexModeChatHeightPercent by Pref(FLEX_MODE_CHAT_HEIGHT_PERCENT, 50)
 
     /**
      * General - Use Image Proxy

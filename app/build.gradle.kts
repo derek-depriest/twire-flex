@@ -82,6 +82,11 @@ dependencies {
     //AndroidX
     implementation("androidx.core:core:1.16.0-beta01")
     implementation("androidx.appcompat:appcompat:1.3.1")
+
+    // Jetpack WindowManager for foldable device support (Flex Mode)
+    implementation("androidx.window:window:1.2.0")
+    implementation("androidx.window:window-java:1.2.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.1")

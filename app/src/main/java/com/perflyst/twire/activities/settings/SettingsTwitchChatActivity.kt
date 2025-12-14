@@ -20,6 +20,7 @@ import com.perflyst.twire.service.Settings.chatEmoteSEVENTV
 import com.perflyst.twire.service.Settings.chatEnableSSL
 import com.perflyst.twire.service.Settings.chatLandscapeWidth
 import com.perflyst.twire.service.Settings.emoteSize
+import com.perflyst.twire.service.Settings.flexModeEnabled
 import com.perflyst.twire.service.Settings.isChatInLandscapeEnabled
 import com.perflyst.twire.service.Settings.isChatLandscapeSwipeable
 import com.perflyst.twire.service.Settings.messageSize
@@ -36,6 +37,7 @@ class SettingsTwitchChatActivity : ThemeActivity() {
     private lateinit var chatEnableEmoteBBTVSummary: TextView
     private lateinit var chatEnableEmoteFFZSummary: TextView
     private lateinit var chatEnableEmoteSeventvSummary: TextView
+    private lateinit var flexModeEnableSummary: TextView
     private lateinit var chatLandscapeToggle: CheckedTextView
     private lateinit var chatSwipeToShowToggle: CheckedTextView
     private lateinit var chatEnableSsl: CheckedTextView
@@ -43,6 +45,7 @@ class SettingsTwitchChatActivity : ThemeActivity() {
     private lateinit var chatEnableEmoteBBTV: CheckedTextView
     private lateinit var chatEnableEmoteFFZ: CheckedTextView
     private lateinit var chatEnableEmoteSeventv: CheckedTextView
+    private lateinit var flexModeEnableToggle: CheckedTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +70,7 @@ class SettingsTwitchChatActivity : ThemeActivity() {
             findViewById(R.id.chat_enable_emote_seventv_summary)
         chatEnableAccountConnectSummary =
             findViewById(R.id.chat_enable_account_connect_summary)
-
+        flexModeEnableSummary = findViewById(R.id.flex_mode_enable_summary)
 
         chatLandscapeToggle = findViewById(R.id.chat_landscape_enable_title)
         chatSwipeToShowToggle = findViewById(R.id.chat_landscape_swipe_title)
@@ -77,6 +80,7 @@ class SettingsTwitchChatActivity : ThemeActivity() {
         chatEnableEmoteSeventv = findViewById(R.id.chat_enable_emote_seventv)
         chatEnableAccountConnect =
             findViewById(R.id.chat_enable_account_connect)
+        flexModeEnableToggle = findViewById(R.id.flex_mode_enable_title)
 
         updateSummaries()
 
@@ -109,6 +113,9 @@ class SettingsTwitchChatActivity : ThemeActivity() {
         }
         binding.emoteSeventvButton.setOnClickListener { view: View? ->
             this.onClickChatEmoteSEVENTV()
+        }
+        binding.flexModeEnableButton.setOnClickListener { view: View? ->
+            this.onClickFlexModeEnable()
         }
     }
 
@@ -146,6 +153,12 @@ class SettingsTwitchChatActivity : ThemeActivity() {
             chatEnableAccountConnect,
             chatEnableAccountConnectSummary,
             chatAccountConnect
+        )
+        // Flex Mode enable
+        updateSummary(
+            flexModeEnableToggle,
+            flexModeEnableSummary,
+            flexModeEnabled
         )
     }
 
@@ -220,6 +233,11 @@ class SettingsTwitchChatActivity : ThemeActivity() {
 
     fun onClickChatAccountConnect() {
         chatAccountConnect = !chatAccountConnect
+        updateSummaries()
+    }
+
+    fun onClickFlexModeEnable() {
+        flexModeEnabled = !flexModeEnabled
         updateSummaries()
     }
 
