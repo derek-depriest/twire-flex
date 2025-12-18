@@ -56,7 +56,7 @@ The easiest way to contribute is by reporting issues. The other way involves mak
 
 To clone the repository, run the following commands:
 ```bash
-git clone https://github.com/YOUR_USERNAME/twire-flex
+git clone https://github.com/derek-depriest/twire-flex
 cd twire-flex
 ```
 If you ever need to update your copy to the latest version, run:
