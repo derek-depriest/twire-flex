@@ -216,9 +216,11 @@ internal class ChatEmoteManager(private val channel: UserInfo) {
         for (i in 0..<files.length()) {
             val file = files.getJSONObject(i)
             val name = file.getString("name")
+            if (!name.endsWith(".webp")) continue
+
             // Only match animated webp files like "1x.webp", "2x.webp", etc.
             // Skip static files like "1x_static.webp" and other formats
-            if (!name.endsWith(".webp") || name.contains("_static")) continue
+            // if (!name.endsWith(".webp") || name.contains("_static")) continue
 
             val size = name.substring(0, 1).toInt()
             urlMap.put(size, baseUrl + name)
