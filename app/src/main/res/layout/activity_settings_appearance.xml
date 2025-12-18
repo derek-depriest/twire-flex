@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true"
     android:background="?attr/colorPrimary"
-    tools:context="com.perflyst.twire.activities.settings.SettingsAppearanceActivity">
+    tools:context="com.indev.twireflex.activities.settings.SettingsAppearanceActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/settings_appearance_toolbar"
@@ -18,7 +18,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/appearance_fragment"
-        android:name="com.perflyst.twire.fragments.AppearanceSettingsFragment"
+        android:name="com.indev.twireflex.fragments.AppearanceSettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

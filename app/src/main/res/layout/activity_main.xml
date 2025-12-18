@@ -108,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.perflyst.twire.views.recyclerviews.AutoSpanRecyclerView
+                <com.indev.twireflex.views.recyclerviews.AutoSpanRecyclerView
                     android:id="@+id/main_list"
                     style="@style/autospanRecyclerView"
                     android:layout_width="match_parent"
@@ -145,7 +145,7 @@
     <!-- The navigation drawer-->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/drawer_fragment"
-        android:name="com.perflyst.twire.fragments.NavigationDrawerFragment"
+        android:name="com.indev.twireflex.fragments.NavigationDrawerFragment"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"

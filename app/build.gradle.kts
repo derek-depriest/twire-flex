@@ -8,12 +8,12 @@ plugins {
 }
 
 android {
-    namespace = "com.perflyst.twire"
+    namespace = "com.indev.twireflex"
     compileSdk = 36
     ndkVersion = "25.0.8775105"
 
     defaultConfig {
-        applicationId = "com.perflyst.twire"
+        applicationId = "com.indev.twireflex"
         minSdk = 21
         targetSdk = 35
         versionCode = 538
@@ -33,19 +33,19 @@ android {
                     "proguard-rules.pro"
                 )
             )
-            resValue("string", "app_name", "Twire")
+            resValue("string", "app_name", "Twire Flex")
             signingConfig = signingConfigs.getByName("debug")
         }
         debug {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-DEBUG"
-            resValue("string", "app_name", "Twire Debug")
+            resValue("string", "app_name", "Twire Flex Debug")
         }
     }
 
     applicationVariants.all {
         outputs.all {
-            (this as BaseVariantOutputImpl).outputFileName = "Twire-${versionName}.apk"
+            (this as BaseVariantOutputImpl).outputFileName = "TwireFlex-${versionName}.apk"
         }
     }
 

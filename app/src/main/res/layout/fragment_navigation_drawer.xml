@@ -7,7 +7,7 @@
     android:background="?attr/navigationDrawerBackground"
     android:clickable="true"
     android:focusable="true"
-    tools:context="com.perflyst.twire.fragments.NavigationDrawerFragment">
+    tools:context="com.indev.twireflex.fragments.NavigationDrawerFragment">
 
     <ScrollView
         android:layout_width="match_parent"

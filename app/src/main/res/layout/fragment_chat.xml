@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.perflyst.twire.fragments.ChatFragment">
+    tools:context="com.indev.twireflex.fragments.ChatFragment">
 
     <LinearLayout
         android:id="@+id/emote_keyboard_container"
@@ -121,7 +121,7 @@
             android:src="@drawable/ic_mood"
             app:tint="?attr/chatSendIconColor" />
 
-        <com.perflyst.twire.views.EditTextBackEvent
+        <com.indev.twireflex.views.EditTextBackEvent
             android:id="@+id/send_message_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -192,7 +192,7 @@
         android:layout_above="@id/chat_input"
         android:background="?attr/chatStatusBarColor" />
 
-    <com.perflyst.twire.views.recyclerviews.ChatRecyclerView
+    <com.indev.twireflex.views.recyclerviews.ChatRecyclerView
         android:id="@+id/ChatRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
