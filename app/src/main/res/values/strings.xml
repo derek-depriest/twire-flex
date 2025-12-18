@@ -174,7 +174,7 @@
     <!-- Welcome Activity -->
     <string name="title_activity_welcome">Twire setup</string>
     <string name="welcome_text_line_one">Welcome to</string>
-    <string name="welcome_text_line_two">Twire</string>
+    <string name="welcome_text_line_two">Twire Flex</string>
 
     <!-- Login Activity-->
     <string name="title_activity_login" translatable="false">@string/title_activity_welcome</string>
