@@ -141,6 +141,7 @@ class StreamFragment : Fragment(), Player.Listener {
     @JvmField
     var chatOnlyViewVisible: Boolean = false
     private var castingViewVisible = false
+    private var isInFlexMode = false
 
     // just use audioViewVisible as boolean
     private var isAudioOnlyModeEnabled = false
@@ -1019,6 +1020,12 @@ class StreamFragment : Fragment(), Player.Listener {
     }
 
     private fun setVideoViewLayout() {
+        // Skip normal layout logic when in Flex Mode - Flex Mode handles its own layout
+        if (isInFlexMode) {
+            Timber.d("Skipping setVideoViewLayout - in Flex Mode")
+            return
+        }
+
         val layoutParams = rootView.layoutParams
         layoutParams.height =
             if (isLandscape) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
@@ -1754,6 +1761,37 @@ class StreamFragment : Fragment(), Player.Listener {
 
     private fun hideQualities() {
         mQualityWrapper.visibility = View.GONE
+    }
+
+    /**
+     * Apply Flex Mode-specific video settings for optimal viewing on foldable devices.
+     * Sets the video to RESIZE_MODE_FIT to ensure it's centered and properly scaled.
+     */
+    fun applyFlexModeVideoSettings() {
+        Timber.d("Applying Flex Mode video settings - centering video")
+        isInFlexMode = true
+
+        // Configure video wrapper to fill the available space (set by StreamActivity)
+        val layoutWrapper = mVideoWrapper.layoutParams as ConstraintLayout.LayoutParams
+        layoutWrapper.width = ConstraintLayout.LayoutParams.MATCH_PARENT
+        layoutWrapper.height = ConstraintLayout.LayoutParams.MATCH_PARENT
+        mVideoWrapper.layoutParams = layoutWrapper
+
+        // Set video view to FIT mode for centered display
+        mVideoView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT)
+
+        // Remove dimension ratio constraint to allow flexible sizing
+        (mVideoView.layoutParams as ConstraintLayout.LayoutParams).dimensionRatio = null
+    }
+
+    /**
+     * Revert Flex Mode video settings back to normal orientation-based behavior.
+     */
+    fun revertFlexModeVideoSettings() {
+        Timber.d("Reverting Flex Mode video settings")
+        isInFlexMode = false
+        // Reapply standard video layout rules
+        setVideoViewLayout()
     }
 
     interface StreamFragmentListener {

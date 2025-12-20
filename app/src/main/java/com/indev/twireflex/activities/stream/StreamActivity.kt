@@ -170,6 +170,12 @@ abstract class StreamActivity : ThemeActivity(), StreamFragmentListener {
         // Hide the landscape chat wrapper since we're using flex mode layout
         findViewById<View>(R.id.chat_landscape_fragment)?.visibility = View.GONE
         findViewById<View>(R.id.chat_placement_wrapper)?.visibility = View.GONE
+
+        // Notify StreamFragment to use centered video mode for Flex Mode
+        mStreamFragment?.applyFlexModeVideoSettings()
+
+        // Notify ChatFragment to maximize chat (hide emote picker by default)
+        mChatFragment?.maximizeChatForFlexMode()
     }
 
     /**
@@ -181,6 +187,9 @@ abstract class StreamActivity : ThemeActivity(), StreamFragmentListener {
         // Restore visibility of layout wrappers
         findViewById<View>(R.id.chat_landscape_fragment)?.visibility = View.VISIBLE
         findViewById<View>(R.id.chat_placement_wrapper)?.visibility = View.VISIBLE
+
+        // Notify StreamFragment to revert video settings
+        mStreamFragment?.revertFlexModeVideoSettings()
 
         // Revert to standard orientation-based layout
         updateOrientation()

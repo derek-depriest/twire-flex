@@ -844,6 +844,20 @@ class ChatFragment : Fragment(), EmoteKeyboardDelegate, ChatAdapterCallback {
     }
 
     /**
+     * Maximize chat view for Flex Mode by hiding the emote picker panel.
+     * This gives more screen space for chat messages when the device is in tabletop mode.
+     */
+    fun maximizeChatForFlexMode() {
+        Timber.d("Maximizing chat for Flex Mode - hiding emote picker")
+        // Close the emote keyboard if it's open
+        if (keyboardState == KeyboardState.EMOTE) {
+            setKeyboardState(KeyboardState.CLOSED)
+        }
+        // Hide the emote keyboard container
+        emoteKeyboardContainer?.visibility = View.GONE
+    }
+
+    /**
      * Called from EmoteGridFragments when an Emote in the emotekeyboard has been clicked
      */
     override fun onEmoteClicked(clickedEmote: Emote?, view: View) {
