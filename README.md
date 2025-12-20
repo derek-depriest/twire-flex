@@ -11,6 +11,7 @@ Optimized layout for foldable devices in "tabletop mode" (half-folded with horiz
 - **Automatic detection** - Seamlessly switches when you fold/unfold
 - **Smooth animations** - Polished transitions between modes
 - **Toggle in settings** - Enable/disable flex mode as needed
+- **Additional Themes** - I highly recommend Twitch OLED
 
 Perfect for hands-free Twitch viewing on foldable devices!
 
@@ -19,10 +20,6 @@ Perfect for hands-free Twitch viewing on foldable devices!
 Twire is an open source, ad-free Twitch browser and stream player for Android.
 
 This is a fork of [Twire](https://github.com/twireapp/Twire), which itself is a fork of the [Pocket Plays for Twitch](https://github.com/SebastianRask/Pocket-Plays-for-Twitch) Android application.
-
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/com.perflyst.twire/)
 
 ## Current features
 
@@ -37,14 +34,15 @@ This is a fork of [Twire](https://github.com/twireapp/Twire), which itself is a 
 - Highly customizable UI
 - Twitch account support
 
-## Screenshots
+## Images
 
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1_my_streams.png" style="width: 23%;margin:0.5%;" />](fastlane/metadata/android/en-US/images/phoneScreenshots/1_my_streams.png)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2_player.png" style="width: 23%;margin:0.5%;" />](fastlane/metadata/android/en-US/images/phoneScreenshots/2_player.png)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3_player_settings.png" style="width: 23%;margin:0.5%;" />](fastlane/metadata/android/en-US/images/phoneScreenshots/3_player_settings.png)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4_navigation.png" style="width: 23%;margin:0.5%;" />](fastlane/metadata/android/en-US/images/phoneScreenshots/4_navigation.png)
+[<img src="Desk_Twire_Flex.jpg" style="width: 48%;margin:0.5%;" />](Desk_Twire_Flex.jpg)
 
-*previews taken with True Night theme enabled*
+*Twire Flex in action - showing Flex Mode on Galaxy Z Fold*
+
+[<img src="Screenshot_Twire_Flex.jpg" style="width: 48%;margin:0.5%;" />](Screenshot_Twire_Flex.jpg)
+
+*Screenshot showing actual implementation*
 
 
 
