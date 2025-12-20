@@ -337,6 +337,17 @@
     <string name="changelog_title">Changelog</string>
     <string name="changelog_show_after_update">Show changelog after an update</string>
 
+    <!-- Welcome to Flex Dialog -->
+    <string name="welcome_to_flex_title">Welcome to Twire Flex!</string>
+    <string name="welcome_flex_intro">Twire Flex is an enhanced fork of Twire with special support for foldable devices.</string>
+    <string name="welcome_flex_feature_title">Flex Mode for Foldables</string>
+    <string name="welcome_flex_feature_description">When you half-fold your device horizontally (tabletop mode), Flex Mode automatically activates:\n\n• Video displays on the top half\n• Chat displays on the bottom half\n• Perfect hands-free viewing angle</string>
+    <string name="welcome_flex_how_it_works">How It Works</string>
+    <string name="welcome_flex_layout_description">Flex Mode automatically detects when your foldable device is in tabletop position and splits the screen for optimal viewing. You can enable or disable this feature in Settings > Twitch Chat.</string>
+    <string name="welcome_flex_credits">This is a fork of Twire. All features from the original Twire are included, plus Flex Mode support and visual enhancements.</string>
+    <string name="welcome_flex_settings_button">Flex Settings</string>
+    <string name="welcome_flex_got_it">Got It!</string>
+
     <!-- Error Reporting -->
     <string name="report_error_never">Never</string>
     <string name="report_error_always">Always</string>

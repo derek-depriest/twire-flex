@@ -62,6 +62,7 @@ sentry.properties
 .claude/
 .aider*
 .cursor/
+claude.md
 
 # Implementation planning documents
 TWIRE_FLEX_MODE_IMPLEMENTATION.md

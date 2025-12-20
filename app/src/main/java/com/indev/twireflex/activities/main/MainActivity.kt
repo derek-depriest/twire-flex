@@ -23,6 +23,7 @@ import com.indev.twireflex.adapters.StreamsAdapter
 import com.indev.twireflex.databinding.ActivityMainBinding
 import com.indev.twireflex.fragments.ChangelogDialogFragment
 import com.indev.twireflex.fragments.NavigationDrawerFragment
+import com.indev.twireflex.fragments.WelcomeToFlexDialogFragment
 import com.indev.twireflex.misc.TooltipWindow
 import com.indev.twireflex.misc.UniversalOnScrollListener
 import com.indev.twireflex.service.AnimationService
@@ -367,9 +368,12 @@ abstract class MainActivity<E> : ThemeActivity() {
     private fun checkForUpdate() {
         val versionCode = BuildConfig.VERSION_CODE
 
-        if (lastVersionCode != versionCode && showChangelogs) {
-            ChangelogDialogFragment().show(supportFragmentManager, "ChangelogDialog")
+        // Show welcome dialog on first launch (when lastVersionCode is 0)
+        if (lastVersionCode == 0) {
+            WelcomeToFlexDialogFragment().show(supportFragmentManager, "WelcomeToFlexDialog")
         }
+        // For subsequent version updates, do NOT show changelog
+        // (Twire Flex uses first-launch welcome instead of version changelogs)
     }
 
     /**
